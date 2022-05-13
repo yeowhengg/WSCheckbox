@@ -3,6 +3,7 @@ package sg.edu.rp.c346.id20042741.democheckboxexample;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -26,13 +27,24 @@ public class MainActivity extends AppCompatActivity {
         btnCheck.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                tvShow.setText(String.format("The discount is %s",cbEnabled.isChecked() ? "given":"not given"));
+                double discount = cbEnabled.isChecked()? 0.2 : 0;
+                Toast.makeText(MainActivity.this, "Button Click", Toast.LENGTH_LONG).show();
+                Log.i("MyActivity", "Inside onClick()");
+
                 if (cbEnabled.isChecked()) {
-                    Toast.makeText(MainActivity.this, "Button Click", Toast.LENGTH_LONG).show();
+                    tvShow.setText(String.format("The discount is %s. You need to pay $%.2f",cbEnabled.isChecked() ? "given":"not given",calcPay(100,discount)));
+                }else{
+                    tvShow.setText(String.format("The discount is %s. You need to pay $%.2f",cbEnabled.isChecked() ? "given":"not given",calcPay(100,discount)));
+
                 }
-
-
             }
         });
+
+
+    }
+
+    private double calcPay(double price, double discount){
+        double pay = (1 - discount) * price;
+        return pay;
     }
 }
