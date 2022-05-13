@@ -3,6 +3,7 @@ package sg.edu.rp.c346.id20042741.democheckboxexample;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -20,5 +21,12 @@ public class MainActivity extends AppCompatActivity {
         cbEnabled = findViewById(R.id.cbid);
         btnCheck = findViewById(R.id.btnid);
         tvShow = findViewById(R.id.tvid);
+
+        btnCheck.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                tvShow.setText(String.format("The discount is %s",cbEnabled.isChecked() ? "given":"not given"));
+            }
+        });
     }
 }
