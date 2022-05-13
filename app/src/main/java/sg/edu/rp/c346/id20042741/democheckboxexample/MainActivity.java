@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 tvShow.setText(String.format("The discount is %s",cbEnabled.isChecked() ? "given":"not given"));
+                if (cbEnabled.isChecked()) {
+                    Toast.makeText(MainActivity.this, "Button Click", Toast.LENGTH_LONG).show();
+                }
+
+
             }
         });
     }
